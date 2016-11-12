@@ -33,7 +33,7 @@ app.get('/money', function (req,res) {
     console.log('农民收到'+req.money);
     res.end();
 });
-//错误处理中间件  有四个参数
+//错误处理中间件    有四个参数
 app.use(function (err,req,res,next) {
     console.log(err);
     res.end('error')
