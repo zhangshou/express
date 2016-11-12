@@ -3,7 +3,10 @@ var app = function(req,res){
     var i=0;//定义一个变量每次执行next后加一
     //每执行一次next,会取出一个中间件函数执行，并且把next传进去
     function next(){
-        app.routes[i++](req,res,next);
+        var fn=app.routes[i++];
+        if(fn){
+            fn(req,res,next)
+        }
     }
     next();
 };

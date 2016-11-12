@@ -1,0 +1,25 @@
+/*
+* 参数的处理
+* 请求行 method url(pathname,quuery)
+* 请求头 headers
+* 请求体 body
+* */
+var url=require('url');
+var express=require('express');
+var app=express();
+app.get('/', function (req,res) {
+    console.log(req.method);
+    console.log(req.url);
+    var urlObj=url.parse(req.url);
+    console.log('pathname',urlObj.pathname);
+    console.log('query',urlObj.query);
+    res.end();
+});
+//获取某个用户的信息 :id是占位符,匹配一个字符串
+app.get('users/:id', function (req,res) {
+    //params是express添加的对象属性,属性名就是占位符,值是实际请求的字符串占位符对应的部分
+    res.end('id='+req.params.id)
+});
+app.listen(9090);
+
+
