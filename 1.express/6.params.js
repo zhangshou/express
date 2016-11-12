@@ -3,7 +3,7 @@ var path='/users/:name/:age';
 //真实请求的url地址
 var url='/users/zfpx/8';
 //存放所有的参数名
-var paramNames=[]; 
+var paramNames=[];
 var regStr=path.replace(/:(\w+)/g, function (matchedStr,group1) {
     paramNames.push(group1);//把name age添加进来
     return '(\\w+)';
